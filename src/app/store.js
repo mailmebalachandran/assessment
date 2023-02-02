@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import questionsSlice from '../features/questions/questionsSlice';
+import { api } from './services/baseApiSetup';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    [api.reducerPath]: api.reducer,
+    questions: questionsSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({serializableCheck: false}).concat(api.middleware),
 });
