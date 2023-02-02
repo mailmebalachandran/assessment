@@ -10,7 +10,7 @@ const Login = () => {
   });
   useEffect(() => {
     const isLoggedIn = sessionStorage.getItem("isLoggedIn");
-    navigate(isLoggedIn ? "/landing" : "/");
+    navigate(isLoggedIn ? "/landing" : "/login");
   }, []);
   const handleLogin = () => {
     if (state.email === "admin@gmail.com" && state.password === "admin") {
